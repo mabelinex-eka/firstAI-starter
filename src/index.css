@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --tv-bg: #ffffff;
+    --tv-card: #f8f9fd;
+    --tv-surface: #ffffff;
+    --tv-border: #e0e3eb;
+    --tv-text: #131722;
+    --tv-muted: #787b86;
+    --tv-green: #089981;
+    --tv-green-bg: rgba(8, 153, 129, 0.1);
+    --tv-red: #f23645;
+    --tv-red-bg: rgba(242, 54, 69, 0.1);
+    --tv-blue: #2962ff;
+    --tv-hover: #f0f3fa;
+  }
+
+  .dark {
+    --tv-bg: #131722;
+    --tv-card: #1e222d;
+    --tv-surface: #1e222d;
+    --tv-border: #2a2e39;
+    --tv-text: #d1d4dc;
+    --tv-muted: #787b86;
+    --tv-green: #089981;
+    --tv-green-bg: rgba(8, 153, 129, 0.12);
+    --tv-red: #f23645;
+    --tv-red-bg: rgba(242, 54, 69, 0.12);
+    --tv-blue: #2962ff;
+    --tv-hover: #2a2e39;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom scrollbars like TradingView */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2e39;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a2e39;
+}
+
+:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #d1d4dc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #787b86;
+}
+
+/* Subtle price tick flash animations */
+@keyframes flashGreen {
+  0% { background-color: rgba(8, 153, 129, 0.35); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+  0% { background-color: rgba(242, 54, 69, 0.35); }
+  100% { background-color: transparent; }
+}
+
+.flash-up {
+  animation: flashGreen 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flash-down {
+  animation: flashRed 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
